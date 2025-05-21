@@ -1,15 +1,13 @@
-# Use a minimal base image
-FROM python:3.13
+FROM meteor/galaxy-python:3.13.0
 
-# Set working directory
 WORKDIR /app
+COPY . .
 
-# Copy code and install dependencies
-COPY . /app
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose port
-EXPOSE 5000
+# REQUIRED BY GalaxyCloud
+RUN python -m pip install --upgrade build && python -m build
 
-# Run the Flask app
-CMD ["python", "app.py"]
+# Run your app
+CMD ["python", "-m", "flaskapp.app"]
