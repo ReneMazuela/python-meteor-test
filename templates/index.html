@@ -1,16 +1,52 @@
 <!DOCTYPE html>
-
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI Code Generator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-html.min.js"></script>
 
-<head>
+    <style>
+      .code-box {
+        background: #f8f8f8;
+        border-radius: 6px;
+        padding: 1em;
+        margin: 1em 0;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        font-family: "Fira Code", "Consolas", monospace;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
 
-    <meta charset="UTF-8">
-    <title>
-        Meteor Flask Test
-    </title> 
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-</head>
-<body>
-    <h1>Python Galaxy Test</h1>
-</body>
+      code {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>OpenAI Code Generator</h1>
+    <form method="post">
+      <textarea
+        name="prompt"
+        rows="5"
+        cols="60"
+        placeholder="Describe what code you need..."
+      ></textarea
+      ><br />
+      <button type="submit">Generate Code</button>
+    </form>
+
+    {% if code_output %}
+    <h2>Result:</h2>
+    <div id="result">{{ code_output | safe }}</div>
+    {% endif %}
+  </body>
 </html>
