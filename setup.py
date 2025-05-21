@@ -1,16 +1,11 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
-    name='flaskapp',
+    name='flaskweb',
     version='0.1',
-    packages=find_packages(),
-    include_package_data=True,
+    py_modules=['main'],
     install_requires=[
-        'Flask'
+        'Flask',
     ],
-    entry_points={
-        'console_scripts': [
-            'runapp = flaskapp.app:app'
-        ]
-    },
+    include_package_data=True,
 )
