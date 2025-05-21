@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
 import openai
@@ -6,17 +5,12 @@ import os
 import markdown
 import html
 import re
-=======
-from flask import Flask, render_template
-import os
->>>>>>> 58b07f269d86dee87184eaaf1ba14a1f24a4469c
 
 load_dotenv()
 # Set up OpenAI client using the API key from env.
 client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 app = Flask(__name__)
 
-<<<<<<< HEAD
 def format_code_output(raw_text):
     def replace_code_blocks(match):
         lang = match.group(1) or "plaintext"
@@ -25,11 +19,6 @@ def format_code_output(raw_text):
         return f'<pre class="code-box"><code class="language-{lang}">{escaped_code}</code></pre>'
     
     return re.sub(r"```(\w+)?\n(.*?)```", replace_code_blocks, raw_text, flags=re.DOTALL)
-=======
-@app.route('/')
-def home():
-    return render_template('index.html')  # or just return "Hello, World!"
->>>>>>> 58b07f269d86dee87184eaaf1ba14a1f24a4469c
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -54,10 +43,6 @@ def index():
     return render_template("index.html", code_output=code_output)
 
 if __name__ == '__main__':
-<<<<<<< HEAD
     # Bind to PORT environment variable.
-=======
-    # Bind to PORT environment variable if defined (e.g. GalaxyCloud, Heroku)
->>>>>>> 58b07f269d86dee87184eaaf1ba14a1f24a4469c
     port = int(os.environ.get('PORT', 3000))
     app.run(host='0.0.0.0', port=port)
